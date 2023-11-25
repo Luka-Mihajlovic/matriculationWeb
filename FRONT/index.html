@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="mainCss.css">
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <title>MANIFEST</title>
+  </head>
+
+  <body >
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+      <a class="navbar-brand" href="index.html">MANIFEST</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item px-3">
+              <a href="fyp.html" class="nav-link">ZA VAS</a>
+          </li>
+          <li class="nav-item px-3">
+              <a href="map.html" class="nav-link">MAPA</a>
+          </li>
+          <!--no account-->
+          <li class="nav-item px-3" id="loginLi">
+              <a class="nav-link"  
+              id="login"
+              type="button"
+              data-toggle="popover"
+              data-placement="bottom"
+              data-html="true"
+              data-container="body">PRIJAVA</a>
+
+              <div id="popover-content" class="d-none">
+                <form class="text-center" id="loginPopoverForm">
+                  <div class="form-group">
+                    <label for="emailInput">Mejl adresa</label>
+                    <input type="email" class="form-control" id="emailInput" placeholder="Unesite mejl adresu">
+                  </div>
+                  <div class="form-group">
+                    <label for="passInput">Lozinka</label>
+                    <input type="password" class="form-control" id="passInput" placeholder="Unesite lozinku">
+                  </div>
+                  <span class="textStroke accentFont d-none" id="loginError">Nalog sa ovakvim podacima nije pronađen.<br></span>
+                  <button type="button" class="btn btn-primary" onclick="login(this)">PRIJAVITE SE</button>
+                  <br> 
+                  <a href="register.html">Želite da napravite nalog?</a>
+                </form>
+              </div>
+          </li>
+
+          <!--yes account-->
+          <li class="nav-item px-3 d-none" id="accInfoLi">
+            <a class="nav-link"  
+            id="accInfo"
+            type="button"
+            data-toggle="loggedin"
+            data-placement="bottom"
+            data-html="true"
+            data-container="body">PROFIL</a>
+
+            <div id="loggedin-content" class="d-none">
+              <div> <!--takes the hit for the next div to appear-->
+                <div class="text-center">
+                  <p id="namePlate">Trenutno ste na nalogu: <b>LUKA</b></p>
+                  <button type="button" class="btn btn-primary" onclick="logout()">ODJAVITE SE</button>
+                  <hr>
+                  <a href="editAccount.html">IZMENITE PODATKE</a>
+                  <br>
+                  <a href="#" onclick="delAcc()">OBRIŠITE NALOG</a>
+                  <br><br>
+                </div>
+              </div>
+            </div>
+        </li>
+          
+        </ul>
+      </div>
+    </nav>
+
+      <section>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <a href="fyp.html">
+              <img class="d-block w-100" src="assets/images/paintingSolo.jpg" alt="First slide">
+              </a>
+              <div class="carousel-caption">
+                <h5 class="subtitleText textStroke" style="color: var(--lightest)">SADRŽAJ ZA VAS</h5>
+                <p class="subtitleText textStroke" style="color: var(--lightest)">Znamo šta biste najviše voleli</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+              <a href="map.html">
+              <img class="d-block w-100" src="assets/images/mapCover.jpg" alt="Second slide">
+              </a>
+              <div class="carousel-caption">
+                <h5 class="subtitleText textStroke" style="color: var(--lightest)">MAPA</h5>
+                <p class="subtitleText textStroke" style="color: var(--lightest)">Interaktivna mapa događaja oko Vas</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+              <a href="#">
+              <img class="d-block w-100" src="assets/images/pplTalking.jpg" alt="Third slide">
+              </a>
+              <div class="carousel-caption">
+                <h5 class="subtitleText textStroke" style="color: var(--lightest)">O NAMA</h5>
+                <p class="subtitleText textStroke" style="color: var(--lightest)">Saznajte više, našu misiju i ideju iza sajta</p>
+                </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+          </div>
+      </section>
+      <br><br><br><br>
+    <section id="sectionUs">
+    <div class="aboutUs container-fluid text-center" style="position:relative;">
+        <br>
+        <h5 class="accentHeader">O NAMA</h5>
+        <br>
+        <img src="assets/images/fun1.jpg" class="img-small-land imgBorder d-none d-xl-block dropShadow" style = "position:absolute; left:-300px; top:10px;">
+        <img src="assets/images/fun4.jpg" class="img-small-land imgBorder d-none d-xl-block dropShadow" style = "position:absolute; right:-300px; top:200px;">
+        <img src="assets/images/fun3.jpg" class="img-small-portrait imgBorder d-none d-xl-block dropShadow" style = "position:absolute; right:-250px; top:-75px;">
+        <img src="assets/images/fun2.jpg" class="img-small-portrait imgBorder d-none d-xl-block dropShadow" style = "position:absolute; left:-150px; top:125px; z-index: -2;">
+        <p class="px-5 accentFont text-justify"> 
+            Ideja sajta je pružanje mogućnosti mnogima da pronađu događaje koji se dešavaju u njihovoj blizini, time što se pruža interaktivna mapa korisnicima. Na njoj se mogu pronaći događaji koji objavaljuju drugi korisnici, razvrstani po različitim kriterijumima kao što su daljina, tip, plaćene ulaznice i slično.
+            Projekat je napravljen samostalno od strane Luke Mihajlović, kao maturski rad u gimnaziji "Gimnazija u Ćupriji". Tehnologije korišćene za front-end su Bootstrap, HTML/CSS, i Javascript. Dodatne funkcionalnosti sajta su obezbeđene putem kreacije naloga, i dostupnom stranicom "Za Vas", kojom korisnik vidi događaje koji se uklapaju sa njihovim interesima. 
+            Dodatno, projekat je inspirisan temom sa FON Hakatona, u kojem sam učestvovao kao član tima 404! Hteo bih još malo da proširim ovaj paragraf, međutim nemam mnogo sadržaja. Figma je korišćena kao program za nacrt dizajna sajta, i dodatne informacije su dostupne na ispisanom maturskom radu.
+        </p>
+        <br>
+    </div>
+    </section>
+    <br> <br> <br> <br> <br> <br> <br> <br>
+    <div class="container-fluid footerStyle">
+        <footer class="mr-auto px-5 pb-2 text-right">
+            <i class="bi bi-facebook iconClass pl-4"></i>
+            <i class="bi bi-twitter iconClass pl-4"></i>
+            <i class="bi bi-instagram iconClass pl-4"></i>
+        </footer>
+    </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="popovers.js"></script>
+    <script src="login.js"></script>
+    
+  </body>
+</html>

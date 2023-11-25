@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="mainCss.css">
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <title>MANIFEST</title>
+  </head>
+
+  <body style="padding-bottom: 5vh;" >
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+      <a class="navbar-brand" href="index.html">MANIFEST</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item px-3">
+              <a href="fyp.html" class="nav-link">ZA VAS</a>
+          </li>
+          <li class="nav-item px-3">
+              <a href="map.html" class="nav-link">MAPA</a>
+          </li>
+          <!--no account-->
+          <li class="nav-item px-3" id="loginLi">
+              <a class="nav-link"  
+              id="login"
+              type="button"
+              data-toggle="popover"
+              data-placement="bottom"
+              data-html="true"
+              data-container="body">PRIJAVA</a>
+
+              <div id="popover-content" class="d-none">
+                <form class="text-center" id="loginPopoverForm">
+                  <div class="form-group">
+                    <label for="emailInput">Mejl adresa</label>
+                    <input type="email" class="form-control" id="emailInput" placeholder="Unesite mejl adresu">
+                  </div>
+                  <div class="form-group">
+                    <label for="passInput">Lozinka</label>
+                    <input type="password" class="form-control" id="passInput" placeholder="Unesite lozinku">
+                  </div>
+                  <span class="textStroke accentFont d-none" id="loginError">Nalog sa ovakvim podacima nije pronađen.<br></span>
+                  <button type="button" class="btn btn-primary" onclick="login(this)">PRIJAVITE SE</button>
+                  <br> 
+                  <a href="register.html">Želite da napravite nalog?</a>
+                </form>
+              </div>
+          </li>
+
+          <!--yes account-->
+          <li class="nav-item px-3 d-none" id="accInfoLi">
+            <a class="nav-link"  
+            id="accInfo"
+            type="button"
+            data-toggle="loggedin"
+            data-placement="bottom"
+            data-html="true"
+            data-container="body">PROFIL</a>
+
+            <div id="loggedin-content" class="d-none">
+              <div> <!--takes the hit for the next div to appear-->
+                <div class="text-center">
+                  <p id="namePlate">Trenutno ste na nalogu: <b>LUKA</b></p>
+                  <button type="button" class="btn btn-primary" onclick="logout()">ODJAVITE SE</button>
+                  <hr>
+                  <a href="editAccount.html">IZMENITE PODATKE</a>
+                  <br>
+                  <a href="#" onclick="delAcc()">OBRIŠITE NALOG</a>
+                  <br><br>
+                </div>
+              </div>
+            </div>
+        </li>
+          
+        </ul>
+      </div>
+    </nav>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3 d-flex flex-column sideBar fullHeightContainer  align-items-center">
+              <!-- sidebar content area-->
+              <div class="text-center d-flex h-100 align-items-center">
+                <form>
+
+                  <div class="form-group">
+                    <label for="titleInput" class="accentFont">PRETRAGA PO NASLOVU</label>
+                    <input type="text" class="form-control" id="titleInput" placeholder="Naslov objave">
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <label for="distanceInput" class="accentFont">PRIKAŽI DOGAĐAJE U BLIZINI OD:</label>
+                    <input title="Lokacija trenutno nije uključena." disabled type="number" class="form-control" id="distanceInput" placeholder="Maksimalna daljina (m)">
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <label for="typeInput" class="accentFont">FILTRIRAJ PO TIPU OBJAVE</label>
+                    <select class="form-control" id="typeInput">
+                    <option value="None" selected> </option>
+                    <option value="Takmicenja">Takmičenja</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Muzika">Muzika</option>
+                    <option value="Umetnost">Umetnost</option>
+                    <option value="Digre">Društvene igre</option>
+                    <option value="Religija">Verske manifestacije</option>
+                    <option value="Diy">Uradi sam</option>
+                    <option value="Edukacija">Edukacija</option>
+                    <option value="Predstave">Predstave</option>
+                    <option value="Humanitarac">Humanitarni događaji</option>
+                    <option value="Ostalo">Ostalo</option>
+                    </select>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <label for="dateInput" class="accentFont">PRIKAŽI DOGAĐAJE KOJI SE ODVIJAJU POSLE:</label>
+                    <input type="date" class="form-control" id="dateInput" min="1945-01-01" onfocus="this.min=new Date().toISOString().split('T')[0]">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="checkbox" class="formcheck" id="payCheck" checked>
+                    <label class="accentFont" for="payCheck">PRIKAŽI PLAĆENE DOGAĐAJE?</label>
+                    <br>
+                    <div id="accSensitiveFilters">
+                      <input type="checkbox" class="formcheck" id="followCheck" checked>
+                      <label class="accentFont" for="followCheck">PRIKAŽI DOGAĐAJE KOJE PRATITE?</label>
+                      <br>
+                      <input type="checkbox" class="formcheck" id="yourCheck" checked>
+                      <label class="accentFont" for="yourCheck">PRIKAŽI VAŠE DOGAĐAJE?</label>
+                    </div>
+                  </div>
+
+                  <button id="filterButton" type="button" class="btn btn-primary" onclick="setFilters()">PRIMENI</button>
+
+                </form>
+            </div>
+          </div>
+          <div>
+            <!-- This is the main content area -->
+
+                <div class="mapdiv float-right dropShadow">
+                  <div id="map" style="height:100%;">
+
+                  </div>
+                </div>
+                <br>
+                
+                
+                <button id="createButton" class="d-none btn btn-primary float-right my-2" onclick="goToCreatePost()">KREIRAJTE OBJAVU</button>
+          </div>
+          
+        </div>
+      </div>
+
+    <div class="container-fluid footerStyle">
+        <footer class="mr-auto px-5 pb-3 text-right">
+            <i class="bi bi-facebook iconClass pl-4"></i>
+            <i class="bi bi-twitter iconClass pl-4"></i>
+            <i class="bi bi-instagram iconClass pl-4"></i>
+        </footer>
+    </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="mapJs.js"></script>
+    <script src="popovers.js"></script>
+    <script src="login.js"></script>
+
+    <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+      ({key: "AIzaSyCBilOKki86RGLKayZemKPC1r2OB7_qcJY", v: "beta"});</script>
+    <script src="gmap.js"></script>
+    
+
+    
+  </body>
+</html>

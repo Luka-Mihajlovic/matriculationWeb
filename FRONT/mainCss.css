@@ -1,0 +1,237 @@
+:root{
+    --darkest: #182839;
+    --dark: #30404F;
+    --dgrey: #475668;
+    --accent: #2AFFE7;
+    --lightest: #FFFFFF;
+}
+
+.navbar-dark{
+    background-color: var(--darkest);
+    border-bottom: 5px solid var(--accent);
+    color: var(--dgrey);
+}
+
+.nav-link{
+    color: var(--dgrey) !important;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.nav-link:hover{
+    color: var(--lightest) !important;
+    -webkit-transition: color 100ms ease-in-out;
+    -ms-transition: color 100ms ease-in-out;
+    transition: color 100ms ease-in-out;
+}
+
+.navbar-brand{
+    color: var(--lightest) !important;
+    font-weight: bolder;
+    font-size: xx-large;
+}
+
+.navbar-brand:hover{
+    color: var(--accent) !important;
+    -webkit-transition: color 100ms ease-in-out;
+    -ms-transition: color 100ms ease-in-out;
+    transition: color 100ms ease-in-out;
+}
+
+.carouselImage{
+    max-width: 900px;
+    max-height: 450px;
+}
+
+.img-small-land{
+    max-width: 450px;
+    max-height: 225px;
+}
+
+.img-small-portrait{
+    max-width: 225px;
+    max-height: 450px;
+}
+
+.carousel-item img {
+    width: 100vw;
+    height: 80vh;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.textStroke{
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.aboutUs{
+    background-color: var(--darkest);
+    width: 50vw;
+}
+
+.footerStyle{
+    background-color: var(--darkest);
+    border-top: 5px solid var(--accent);
+    z-index: 5;
+    bottom: 0;
+    position: fixed;
+    max-height: 7vh;
+}
+
+.imgBorder{
+    border: 5px solid var(--accent);
+    position:relative;
+}
+
+.iconClass{
+    font-size: 2rem; 
+    color: var(--accent);
+}
+
+.sideBar{
+    background-color: var(--darkest);
+    width: 25vw;
+    font-weight: bolder;
+    font-size: large;
+}
+
+.darkbg{
+    background-color: var(--darkest);
+}
+
+.lightestbg{
+    background-color: var(--lightest);
+}
+
+.formcheck{
+    position: absolute;
+    margin-top: .5rem;
+    margin-left: -1.25rem;
+    accent-color: var(--accent);
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    border-color: var(--darkest);
+    color: var(--darkest);
+    font-weight: bold;
+}
+
+.btn-primary:hover{
+    background-color: var(--lightest);
+    border-color: var(--accent);
+    color: var(--darkest);
+    -webkit-transition: background-color 100ms ease-in-out;
+    -ms-transition: background-color 100ms ease-in-out;
+    transition: background-color 100ms ease-in-out;
+}
+
+.mapdiv{
+    width: 60vw;
+    height: 75vh;
+    background-color: var(--darkest);
+    border: 5px solid var(--accent);
+    margin-left: 7.5vw;
+    margin-top: 2.5vh;
+}
+
+.uploadMapDiv{
+    width: 95%;
+    height: 50vh;
+    margin: auto;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: contain;
+}
+
+.fypDiv{
+    overflow-x: auto;
+    height:50%;
+    width: 100%;
+}
+
+.card-title{
+    font-weight: bold;
+    color: var(--darkest);
+}
+
+.card{
+    border: 5px solid var(--darkest);
+}
+
+.dropShadow{
+    filter: drop-shadow(6px 6px 0px #00000038);
+}
+
+.accentFont{
+    color: var(--lightest);
+}
+
+.darkFont{
+    color: var(--darkest);
+    font-weight: bold;
+}
+
+.fullHeightContainer{
+    min-height: 90vh;
+    max-height: 100%;
+}
+
+.nav-link:hover{
+    cursor: pointer;
+}
+
+.subtitleText{
+    color: var(--dgrey);
+    font-weight: bold;
+}
+
+.post-img {
+    width: 75%;
+    height: 15vw;
+    object-fit: contain;
+    border: 5px solid var(--darkest);
+}
+
+
+
+.btn-form {
+    background-color: #EDF2F4;
+    border-color: #EDF2F4;
+    color: #EF233C;
+}
+
+.btn-form:hover{
+    background-color: #EF233C;
+    border-color: #EF233C;
+    color: #EDF2F4;
+    -webkit-transition: background-color 100ms ease-in-out;
+    -ms-transition: background-color 100ms ease-in-out;
+    transition: background-color 100ms ease-in-out;
+}
+
+.accentHeader{
+    color: #EDF2F4;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.bigWords{
+    color: black;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+
+
+.formDiv{
+    max-width: 50vw;
+}
+
+.card-body{
+    overflow-y: auto;
+    max-height: 30vh;
+}

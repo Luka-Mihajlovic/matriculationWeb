@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="mainCss.css">
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <title>MANIFEST</title>
+  </head>
+
+  <body  class="darkbg">
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+      <a class="navbar-brand" href="index.html">MANIFEST</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item px-3">
+              <a href="fyp.html" class="nav-link">ZA VAS</a>
+          </li>
+          <li class="nav-item px-3">
+              <a href="map.html" class="nav-link">MAPA</a>
+          </li>
+          <!--no account-->
+          <li class="nav-item px-3" id="loginLi">
+              <a class="nav-link"  
+              id="login"
+              type="button"
+              data-toggle="popover"
+              data-placement="bottom"
+              data-html="true"
+              data-container="body">PRIJAVA</a>
+
+              <div id="popover-content" class="d-none">
+                <form class="text-center" id="loginPopoverForm">
+                  <div class="form-group">
+                    <label for="emailInput">Mejl adresa</label>
+                    <input type="email" class="form-control" id="emailInput" placeholder="Unesite mejl adresu">
+                  </div>
+                  <div class="form-group">
+                    <label for="passInput">Lozinka</label>
+                    <input type="password" class="form-control" id="passInput" placeholder="Unesite lozinku">
+                  </div>
+                  <span class="textStroke accentFont d-none" id="loginError">Nalog sa ovakvim podacima nije pronađen.<br></span>
+                  <button type="button" class="btn btn-primary" onclick="login(this)">PRIJAVITE SE</button>
+                  <br> 
+                  <a href="register.html">Želite da napravite nalog?</a>
+                </form>
+              </div>
+          </li>
+
+          <!--yes account-->
+          <li class="nav-item px-3 d-none" id="accInfoLi">
+            <a class="nav-link"  
+            id="accInfo"
+            type="button"
+            data-toggle="loggedin"
+            data-placement="bottom"
+            data-html="true"
+            data-container="body">PROFIL</a>
+
+            <div id="loggedin-content" class="d-none">
+              <div> <!--takes the hit for the next div to appear-->
+                <div class="text-center">
+                  <p id="namePlate">Trenutno ste na nalogu: <b>LUKA</b></p>
+                  <button type="button" class="btn btn-primary" onclick="logout()">ODJAVITE SE</button>
+                  <hr>
+                  <a href="editAccount.html">IZMENITE PODATKE</a>
+                  <br>
+                  <a href="#" onclick="delAcc()">OBRIŠITE NALOG</a>
+                  <br><br>
+                </div>
+              </div>
+            </div>
+        </li>
+          
+        </ul>
+      </div>
+    </nav>
+
+      <div class="container-fluid d-flex justify-content-md-center fullHeightContainer lightestbg col-md-5 flex-column px-5">
+          <div>
+            <!-- sidebar content area-->
+            <div class="text-center">
+              <h5 class="darkFont" style="font-size: xx-large">REGISTRACIJA NALOGA</h5>
+              <hr>
+              <form id="registerForm">
+                <div class="form-group">
+                  <label for="registerEmailInput" class="darkFont">Mejl adresa:</label>
+                  <input type="email" class="form-control" id="registerEmailInput" placeholder="Mejl adresa naloga">
+                  <span class="textStroke accentFont d-none" id="ErrorMailWarning"><br>Već postoji ova adresa u našoj bazi podataka, ili je uneta mejl adressa nevažeća.</span>
+                  <span class="textStroke accentFont d-none" id="EmptyMailWarning"><br>Mejl adresa je obavezna.</span>
+                </div>
+                <br>
+                <div class="form-group">
+                  <label for="usernameInput" class="darkFont">Korisničko ime:</label>
+                  <input type="text" class="form-control" id="usernameInput" placeholder="Ime naloga">
+                  <span class="textStroke accentFont d-none" id="TakenNameWarning"><br>Korisnik je već registrovan pod ovim imenom.</span>
+                  <span class="textStroke accentFont d-none" id="ErrorNameWarning"><br>Korisničko ime mora imati manje od 30 karaktera, i samo slova i brojeve.</span>
+                  <span class="textStroke accentFont d-none" id="EmptyNameWarning"><br>Korisničko ime mora biti popunjeno.</span>
+                </div>
+                <br>
+                <div class="form-group">
+                  <label for="passInput" class="darkFont">Lozinka:</label>
+                  <input type="password" class="form-control" id="passInput" placeholder="Lozinka naloga (8+ karaktera, jedno malo i jedno veliko slovo)">
+                  <span class="textStroke accentFont d-none" id="ErrorPassWarning"><br>Lozinka ne sme biti ista kao korisničko ime, i takođe mora sadržati 8+ karaktera, jedno veliko, i jedno malo slovo.</span>
+                  <span class="textStroke accentFont d-none" id="EmptyPassWarning"><br>Lozinka ne sme biti prazna.</span>
+                </div>
+                <br>
+                <div class="form-group">
+                  <label for="repeatPassInput" class="darkFont">Ponovite lozinku:</label>
+                  <input type="password" class="form-control" id="repeatPassInput" placeholder="Ponovljena lozinka naloga">
+                  <span class="textStroke accentFont d-none" id="ErrorRepeatWarning"><br>Ponovljena lozinka nije ista.</span>
+                  <span class="textStroke accentFont d-none" id="EmptyRepeatWarning"><br>Ponovljena lozinka mora biti popunjena.</span>
+                </div>
+                <br>
+                <div class="form-group text-center">
+                  <label for="typeInput" class="darkFont">Vaši interesi:</label>
+                  <fieldset id="typeInput" style="text-align: justify; margin-left: auto; width: 55%;">
+                    <input type="checkbox" name="interests" value="takmicenja" class="formcheck"> Takmičenja<br>
+                    <input type="checkbox" name="interests" value="sport" class="formcheck"> Sport<br>
+                    <input type="checkbox" name="interests" value="muzika" class="formcheck"> Muzika<br>
+                    <input type="checkbox" name="interests" value="umetnost" class="formcheck"> Umetnost<br>
+                    <input type="checkbox" name="interests" value="digre" class="formcheck"> Društvene igre<br>
+                    <input type="checkbox" name="interests" value="religija" class="formcheck"> Verske manifestacije<br>
+                    <input type="checkbox" name="interests" value="diy" class="formcheck"> Uradi sam<br>
+                    <input type="checkbox" name="interests" value="edukacija" class="formcheck"> Edukacija<br>
+                    <input type="checkbox" name="interests" value="predstave" class="formcheck"> Predstave<br>
+                    <input type="checkbox" name="interests" value="humanitarac" class="formcheck"> Humanitarni događaji<br>
+                  </fieldset>
+                  <span class="textStroke accentFont d-none" id="EmptyInterestsWarning"><br>Morate odabrati barem jednu stvar koju volite.</span>
+                </div>
+                <br>
+                
+              </form>
+              <button class="btn btn-primary" id="registerButton" onclick="validate()">NAPRAVITE NALOG</button>
+                <br><br><br><br>
+            </div>
+          </div>
+        </div>
+
+    <div class="container-fluid footerStyle">
+        <footer class="mr-auto px-5 pb-2 text-right">
+            <i class="bi bi-facebook iconClass pl-4"></i>
+            <i class="bi bi-twitter iconClass pl-4"></i>
+            <i class="bi bi-instagram iconClass pl-4"></i>
+        </footer>
+    </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="popovers.js"></script>
+    <script src="register.js"></script>
+    <script src="login.js"></script>
+    
+  </body>
+</html>
